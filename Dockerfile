@@ -5,8 +5,8 @@ MAINTAINER chris1911@users.noreply.github.com
 ENV BASEDIR /gluon
 ENV BUILDDIR /gluon/build
 
-RUN echo >> /etc/apt/apt.conf.d/00aptitude "APT::Install-Recommends \"0\";" && \
-    echo >> /etc/apt/apt.conf.d/00aptitude "APT::Install-Suggests \"0\";" && \
+RUN echo >> /etc/apt/apt.conf.d/00aptitude 'APT::Install-Recommends "0";' && \
+    echo >> /etc/apt/apt.conf.d/00aptitude 'APT::Install-Suggests "0";' && \
     apt-get -y update && \
     apt-get -y install sudo file git ca-certificates build-essential wget flex gettext pkg-config unzip zlib1g-dev libncurses5-dev gawk subversion python liblzma-dev liblzma5 vim p7zip-full
 
