@@ -4,11 +4,12 @@ MAINTAINER chris1911@users.noreply.github.com
 
 ENV BASEDIR /gluon
 ENV BUILDDIR /gluon/build
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN echo >> /etc/apt/apt.conf.d/00aptitude 'APT::Install-Recommends "0";' && \
     echo >> /etc/apt/apt.conf.d/00aptitude 'APT::Install-Suggests "0";' && \
     apt-get -y update && \
-    apt-get -y install sudo file git ca-certificates build-essential wget flex gettext pkg-config unzip zlib1g-dev libncurses5-dev gawk subversion python liblzma-dev liblzma5 vim p7zip-full
+    apt-get -y install sudo file git ca-certificates build-essential wget flex gettext pkg-config unzip zlib1g-dev libncurses5-dev gawk subversion python liblzma-dev liblzma5 vim p7zip-full bsdmainutils
 
 RUN useradd -m gluonbuilder -s /bin/bash && \
     mkdir -p ${BUILDDIR} && \
