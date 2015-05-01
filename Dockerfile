@@ -2,6 +2,7 @@ FROM debian:wheezy
 
 MAINTAINER chris1911@users.noreply.github.com
 
+ENV BASEDIR /gluon
 ENV BUILDDIR /gluon/build
 
 RUN echo >> /etc/apt/apt.conf.d/00aptitude "APT::Install-Recommends \"0\";" && \
@@ -11,7 +12,7 @@ RUN echo >> /etc/apt/apt.conf.d/00aptitude "APT::Install-Recommends \"0\";" && \
 
 RUN useradd -m gluonbuilder -s /bin/bash && \
     mkdir -p ${BUILDDIR} && \
-    chown gluonbuilder:gluonbuilder -R ${BUILDDIR}
+    chown gluonbuilder:gluonbuilder -R ${BASEDIR}
 
 # docker still ADDs files as root, even after setting a different USER; we use sudo to get around this limitation
 # RUN echo 'gluonbuilder  ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
