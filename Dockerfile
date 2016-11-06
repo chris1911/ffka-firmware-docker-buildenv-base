@@ -1,14 +1,14 @@
-FROM debian:wheezy
+FROM debian:jessie
 
 MAINTAINER chris1911@users.noreply.github.com
 
 ENV BASEDIR /gluon
 ENV BUILDDIR /gluon/build
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN	\
 	echo >> /etc/apt/apt.conf.d/00aptitude 'APT::Install-Recommends "0";' && \
 	echo >> /etc/apt/apt.conf.d/00aptitude 'APT::Install-Suggests "0";' && \
-	export DEBIAN_FRONTEND=noninteractive && \
 	apt-get -y update && \
 	apt-get -y install bsdmainutils build-essential ca-certificates cmake file \
 			   flex gawk gettext git less liblzma-dev liblzma5 libncurses5-dev \
